@@ -450,7 +450,9 @@ namespace B2CVerifiedID {
                 int pinCode = RandomNumberGenerator.GetInt32( 1, int.Parse( "".PadRight( issuancePinCodeLength, '9' ) ) );
                 SetPinCode( request, string.Format( "{0:D" + issuancePinCodeLength.ToString() + "}", pinCode ) );
             }
-            SetExpirationDate( request );
+           // Saeed: commenting this line out. It is causing an error : "Something went wrong calling the API..Expiration Date cannot be used when Validity Interval is not allowed to be overridden."
+           // Saeed: This is probably because the sample used the idTOkenHint attestation
+           // SetExpirationDate( request );
             return request;
         }
         private IssuanceRequest SetExpirationDate( IssuanceRequest request) {
